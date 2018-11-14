@@ -149,30 +149,64 @@ f(\xi_1)+g(\xi_1)\phi(\xi_1)-g(\xi_1)(\phi(\xi_1)-\xi_2)
 %==========================================================================================================%
 \pagebreak
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Продемонструємо алгоритм бекстеппінгу на прикладі наступної тривимірної системи
+%=======================ПРИКЛАД_2=========================================================================%
+Розглянемо наступну систему:
 \begin{equation}
     \begin{cases}
-        \dot \xi_1 = f_1 (\xi_1)+ \xi_2 \\
-        \dot \xi_2 = f_2 (\xi_2)+ \xi_3  \\  
-        \dot \xi_3 = u    \\
+    \dot x_1 = u \\
+    \dot x_2 = x_1^3\\
+    \dot x_3 = x_2^3\\
     \end{cases}
 \end{equation}
-Де $\xi_1, \xi_2, \xi_3 \in \mathbb{R}$, $u \in \mathbb{R}$ - керування,  %system states %
-Таку систему можемо розбити на дві підсистеми.
+
+Розглянемо підсистему
+\begin{equation}
+    \begin{cases}
+    \dot x_1 = u^3\\
+    \dot x_2 = x_{1}^3\\
+    \end{cases}
+\end{equation}
+
+В якості допоміжного керування $u$ візмемо $u=ax_1+bx_2$, $a,b \in \mathbb{R}$
+Маємо: 
+\begin{equation}
+    \begin{cases}
+    \dot x_1 = (ax_1+bx_2)^3\\
+    \dot x_2 = x_{1}^3\\
+    \end{cases}
+\end{equation}
+До другого рівняння додамо та віднімемо 
+\begin{equation}
+    \begin{cases}
+    \dot x_1 = (ax_1+bx_2)^3\\
+    \dot x_2 = x_{1}^3 -\gamma^3(x_2)+\gamma^3(x_2)\\
+    \end{cases}
+\end{equation}
+Функцію Ляпунова візьмемо у вигляді  
+\begin{equation}
+    V = 1/2x_{2}^2 + 1/2(x_1 - \gamma(x_2) )^2\\
+\end{equation}
+
+Знайдемо похідну функціїї Ляпунова в силу системи 
+\begin{equation}
+    \dot V = x_2(x_1^3 - \gamma^3(x_2)+\gamma^3(x_2)) + \\
+    (x_1 - \gamma(x_2))(u^3-\frac{\partial \gamma}{\partial x_2}x_1^3)
+\end{equation}
+
+Після перетворень маємо
+\begin{equation}
+    x_2\gamma^3(x_2)+(x_1 - \gamma(x_2))
+    (x_2x_1^2+x_2x_1\gamma(x_2)+x_2\gamma^2(x_2)+u^3- 
+    \frac{\partial \gamma}{\partial x_2}x_2)
+\end{equation}
+
+Для того, щоб функція Ляпунова була від'ємною, потрібно, щоб
+виконувалася наступна умова:
+\begin{equation}
+    x_2x_1^2+x_2x_1\gamma(x_2) + x_2 \gamma^2(x_2) - 
+    \frac{\partial x_2}{\partial x_2}x_1^3 + u^3 = 
+    -p(x_1-\gamma(x_2))^3 +2\beta(x_1-\gamma(x_2)x_{2}^2) 
+\end{equation}
 
 
 
