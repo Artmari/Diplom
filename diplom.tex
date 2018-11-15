@@ -208,7 +208,7 @@ f(\xi_1)+g(\xi_1)\phi(\xi_1)-g(\xi_1)(\phi(\xi_1)-\xi_2)
 
 
 До правої частини першого рівняння додамо та віднімемо функцію $\gamma^3(x_1)$ 
-\begin{equation}
+\begin{equation} \label{m17}
     \begin{cases}
     \dot x_1 =x_{2}^3 -\gamma^3(x_1)+\gamma^3(x_1) \\
     \dot x_2 = (ax_1+bx_2)^3,\\
@@ -220,52 +220,67 @@ f(\xi_1)+g(\xi_1)\phi(\xi_1)-g(\xi_1)(\phi(\xi_1)-\xi_2)
 \begin{equation}
     V = \frac{1}{2}x_{1}^2 +\frac{1}{2}(x_2 - \gamma(x_1) )^2\\
 \end{equation}
-
-Знайдемо похідну функціїї Ляпунова в силу системи 
+Знайдемо похідну функціїї Ляпунова в силу системи~(\ref{m17})
 \begin{equation}
     \dot V = x_1(x_2^3 - \gamma^3(x_1)+\gamma^3(x_1)) + \\
     (x_2 - \gamma(x_1))( (ax_1+bx_2)^3-\frac{\partial \gamma(x_1)}{\partial x_1}x_2^3)
 \end{equation}
-
 Після перетворень маємо
 \begin{eqnarray}
     \dot V&=& x_1\gamma^3(x_1)+(x_2 - \gamma(x_1))
-   \Big (x_1x_2^2 + x_1x_2\gamma(x_1) + x_{1}^3 +\nonumber\\ 
-    &&(ax_1+bx_2)^3 - \frac{\partial \gamma}{\partial x_1}x_{2}^3\Big)
+   \Big (x_1x_2^2 + x_1x_2\gamma(x_1) + x_{1}\gamma^2(x_1) +\nonumber\\ 
+    &&(ax_1+bx_2)^3 - \frac{\partial \gamma(x_1)}{\partial x_1}x_{2}^3\Big)
 \end{eqnarray}
 
-Для того, щоб похідна функції Ляпунова $\dot V$ була від'ємною, потрібно
-представити  $\dot V$ як квадратичну форму, що має вигляд $\dot V =(Gy,y)$ 
+Для того, щоб похідна функції Ляпунова $\dot V$ була від'ємною, представимо
+ $\dot V$ як квадратичну форму, що має вигляд $\dot V =(Gy,y)$ 
 та вибрати матрицю $G$ таку, щоб  $\dot V =(Gy,y) < 0$.
-Хочемо, щоб виконувалась наступна рівність:
-\begin{equation}
-    x_2x_1^2+x_2x_1\gamma(x_2) + x_2 \gamma^2(x_2) - 
-    \frac{\partial x_2}{\partial x_2}x_1^3 + u^3 = 
-    -p(x_1-\gamma(x_2))^3 +2\beta(x_1-\gamma(x_2))x_{2}^2 
-\end{equation}
 
-Візьмемо $\gamma(x_2)$ рівним $x_2\alpha$ де $\alpha \in \mathbb{R}$
-Таким чином рівняння буде мати вигляд
+Знайдемо $a,b$ щоб при деяких $p, \beta$ виконувалась наступна рівність:
 \begin{eqnarray}
-x_2x_{1}^2 + \alpha x_{2}^2x_1 &+& \alpha^2x_{2}^3-\alpha x_{1}^3 +
-a^3x_{1}^3 -\alpha x_{1}^3 
-+ a^3x_{1}^3 + b^3x_{2}^3 + 3ba^2x_{1}^2x_2+\nonumber\\
-3ab^2x_1x_{2}^2 &=&
--p(x_1^3 - \alpha^{3}x_{2}^3 - 3\alpha^{2}x_1x_{2}^2)+
-2\beta x_1x_{2}^2 - 2\alpha \beta x_2^3
+    x_1x_2^2+x_1x_2\gamma(x_1) + x_1 \gamma^2(x_1) - 
+    \frac{\partial \gamma(x_1)}{\partial x_1}x_2^3 + (ax_1+bx_2)^3 = \nonumber\\
+    -p(x_2-\gamma(x_1))^3 +2\beta(x_2-\gamma(x_1))x_{1}^2 
 \end{eqnarray}
 
-
+Оскільки $\gamma(x_1)=\alpha x_1$, де $\alpha \in \mathbb{R}$,
+отримаємо наступне рівняння:
+\begin{eqnarray}
+x_1x_{2}^2 + \alpha x_{1}^2x_2 &+& \alpha^2x_{1}^3 -\alpha x_{2}^3 
++ a^3x_{1}^3 + b^3x_{2}^3 + 3ba^2x_{1}^2x_2+\nonumber
+3ab^2x_1x_{2}^2 =\\
+-p(x_2^3 - \alpha^{3}x_{1}^3 &-& 3\alpha x_2^2x_{1} + 3\alpha^2x_2x_{1}^2)+
+2\beta x_2x_{1}^2 - 2\alpha \beta x_1^3
+\end{eqnarray}
+Для знаходження параметрів отримаємо наступну систему алгебраїчних рівнянь 
 \begin{equation}
-    \dot V = \alpha^3x_{2}^4 - p(x_1-\gamma(x_2))^4
-    +2\beta(x_1-\gamma(x_2))^2x_{2}^2 = 
-    \alpha^3x_{2}^4 + 2\beta(x_1-\alpha x_2)^2x_{2}^2
-    -p(x_1-\alpha x_2)^4 \leq 0
+    \begin{cases}
+        апрр\\
+        оолл\\
+    \end{cases}
 \end{equation}
-Рівняння записуємо у вигляді квадратичної форми
-$(Gy,y)$, де за рахунок вибору параметрів буде виконуватися
-умова $\dot V =(Gy,y) < 0$ 
+
+Розв'язуючи  систему отримали такі значення параметрів 
+
+\begin{eqnarray}
+    \dot V &=& \alpha^3x_{1}^4 - p(x_2-\gamma(x_1))^4
+    +2\beta(x_2-\gamma(x_1))^2x_{1}^2\nonumber\\ 
+    &=&\alpha^3x_{1}^4 + 2\beta(x_2-\alpha x_1)^2x_{1}^2
+    -p(x_2-\alpha x_1)^4
+\end{eqnarray}
+
+Відмітемо що рівність ? можно представити у вигляді $\dot V =(Gy,y)$, де 
+мариця має вигляд 
+\begin{equation}
+G=\left(\begin{array}{clr}
+    a & b\\
+    c & d
+\end{array}\right) 
+\end{equation}
+Матриця G є від'ємно визначена при виконнані наступних умова
+
 Таким чином підсистема з керуванням  $u^3=(ax_1+bx_2)^3$ 
 є стабілізованою. 
+
 
 \end{document}
