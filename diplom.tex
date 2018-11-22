@@ -1,7 +1,4 @@
 \documentclass{article}
-
-    %\usepackage[cp1251]{inputenc} % указать кодировку 
-    
     \usepackage[ukrainian]{babel} 
     \newtheorem{theorem}{Теорема}
     \usepackage{amssymb}
@@ -17,6 +14,7 @@
     \usepackage{color}
     \usepackage{alltt}
     \parindent=1cm
+    \usepackage{indentfirst}
     
 \begin{document}
 Титульный лист
@@ -39,7 +37,7 @@
 Зі зростанням розмірності кожна додаткова фазова змінна входить як керування у нову підсистему. 
 При такому підході суттєвим є вимога трикутності системи.
 
-Клас трикутних систем було введено В.І.~Коробовим у роботі~\cite{?} при розляді задачі
+Клас трикутних систем було введено В.І.~Коробовим у роботі~\cite{Korobov} при розляді задачі
 керування супутником.
 Трикутною системоа має вигляд: 
 \begin{equation}\label{M1}
@@ -407,7 +405,7 @@ $f_1(x_1,x_2,\xi_1)+g_2(x_1,x_2,\xi_1)\xi_2$.
     \begin{cases}
         \dot x_1 = x_2^3 \\
         \dot x_2 = \xi_1^3\\
-        \dot \xi_1 =f_1(x_1,x_2,\xi_1)+g_2(x_1,x_2,\xi_1)\xi_2 = u\\
+        \dot \xi_1 =f_1(x_1,x_2,\xi_1)+g_2(x_1,x_2,\xi_1)\xi_2 = v_1\\
         \end{cases}
 \end{equation}
 
@@ -434,12 +432,12 @@ $f_1(x_1,x_2,\xi_1)+g_2(x_1,x_2,\xi_1)\xi_2$.
 \end{eqnarray}
 
 Використовуючи вже доведене раніше твердженя, що похідна функції Ляпунова $\dot V$ для системи
- ~(\ref{2dim nonlinear system2})  меньше ніж нуль, потрібно вибрати таке $u$, що для похідної функції
+ ~(\ref{2dim nonlinear system2})  меньше ніж нуль, потрібно вибрати таке $v_1$, що для похідної функції
 Ляпунова $\dot V_1$ буде також виконуватися умова $\dot V_1 < 0$.
 
-$u$ виберемо наступним чином:
+$v_1$ виберемо наступним чином:
 \begin{eqnarray}
-    u &=& \frac{\partial v}{\partial x_1}x_{2}^3 + \frac{\partial v}{\partial x_2}\xi_{1}^3
+    v_1 &=& \frac{\partial v}{\partial x_1}x_{2}^3 + \frac{\partial v}{\partial x_2}\xi_{1}^3
     - (x_2 -\alpha x_1) \Big(\xi_1^2 + \xi_1(ax_1 + bx_2) \nonumber \\ 
     &+& (ax_1+bx_2)^2 \Big) -(\xi_1 - ax_1-bx_2)
 \end{eqnarray}
@@ -447,13 +445,40 @@ $u$ виберемо наступним чином:
 \begin{equation}
     \dot V_1 = \dot V - (\xi_1 - v)^2<0
 \end{equation}
+
 Таким чином похідна функії Ляпунова $ \dot V_1 <0$, тобто нульова точка покою системи асимтотично 
 стійка. Можемо зробити висновок, що система з керуванням стабілізована.
-Застосовуючи метод зворотньго ходу можемо .....
+Застосовуючи метод зворотньго ходу до системи ~(\ref{3dim nonlinear system step2}) можемо послідовно під'єднувати
+рівняння, збільшуючи на кожному кроці розмірність системи на один. 
+\begin{equation}
+{\begin{cases}
+{\begin{cases}
+{\begin{cases}
+{\begin{cases}
+{\begin{cases}
+{\begin{cases}
+{\begin{cases}
+{\begin{cases}
+\dot x_1 = x_2^3 \\
+\dot x_2 = \xi_1^3\\
+{\dot  {\xi}}_{1}=f_{1}(x,\xi_{1})+g_{1}(x,\xi_{1})\xi_{2}\end{cases}}\\
+{\dot  {\xi}}_{2}=f_{2}(x,\xi_{1},\xi_{2})+g_{2}(x,\xi_{1},\xi_{2})\xi_{3}\end{cases}}\\\vdots \\\end{cases}}\\
+{\dot  {\xi}}_{i}=f_{i}(x,\xi_{1},\xi_{2},\ldots ,\xi_{i})+g_{i}(x,\xi_{1},\xi_{2},\ldots ,\xi_{i})\xi_{{i+1}}\end{cases}}\\\vdots \end{cases}}\\
+{\dot  {\xi}}_{{k-2}}=f_{{k-2}}(x,\xi_{1},\xi_{2},\ldots \xi_{{k-2}})+g_{{k-2}}(x,\xi_{1},\xi_{2},\ldots ,\xi_{{k-2}})\xi_{{k-1}}\end{cases}}\\
+{\dot  {\xi}}_{{k-1}}=f_{{k-1}}(x,\xi_{1},\xi_{2},\ldots \xi_{{k-2}},\xi_{{k-1}})+g_{{k-1}}(x,\xi_{1},\xi_{2},\ldots ,\xi_{{k-2}},\xi_{{k-1}})\xi_{k}\end{cases}}\\
+{\dot  {\xi}}_{k}=f_{k}(x,\xi_{1},\xi_{2},\ldots \xi_{{k-1}},\xi_{k})+g_{k}(x,\xi_{1},\xi_{2},\ldots ,\xi_{{k-1}},\xi_{k})u\\\end{cases}}
+\end{equation}
+Де починаючи $i=2$ керування $u$ в загальному випадку має вид:
 
+\begin{eqnarray}
+    &&u_{i}(x_{i})={\frac  {1}{g_{i}(x_{i})}}(v_{i-1}-f_{i}(x_{i-1}))
+\end{eqnarray}
+де $v_i$:
 
-
-
+\begin{eqnarray}
+    v_{i-1}=-{\frac  {\partial V_{{i-1}}}{\partial x_{{i-1}}}}g_{{i-1}}(x_{{i-1}})-k_{i}\left(\xi_{i}-u_{{i-1}}(x_{{i-1}})\right)\,
+    +{\frac  {\partial u_{{i-1}}}{\partial x_{{i-1}}}}(f_{{i-1}}(x_{{i-1}})+g_{{i-1}}(x_{{i-1}})\xi_{i}
+\end{eqnarray}
 
 
 
